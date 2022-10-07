@@ -1,4 +1,4 @@
-package ar.edu.unlu.parcialGTA;
+package ar.edu.unlu.parcial.GTA;
 
 public enum Notificacion {
 COMPRASATISFECHA,NOEXISTEELAUTO,DINERONODISPONIBLE,NOHAYESPACIO,GUARDADO,ERROR

@@ -1,17 +1,20 @@
-package ar.edu.unlu.parcialGTA;
+package ar.edu.unlu.parcial.GTA;
 
 import java.util.LinkedList;
 
 public class TommyVercetti extends Ciudadano {
 	
-	private Handy handyPolicial = new Handy();
+	public TommyVercetti(Ciudad ciudad) {
+		super(ciudad);
+	}
 
-	public TommyVercetti(Handy handy) {
-		super();
+	private Handy handyPolicial ;
+
+	public void setHandy(Handy handy) {
 		this.handyPolicial = handy;
 	}
 
-	public Notificacion solicitarAuto(Carl carl) {
+	/*public Notificacion solicitarAuto(Carl carl) {
 		Auto auto = (Auto)carl.buscarAuto();
 		Inmueble inmueble = this.existeEspacio();
 		if(inmueble == null) return Notificacion.NOHAYESPACIO;
@@ -21,19 +24,19 @@ public class TommyVercetti extends Ciudadano {
 			inmueble.guardarAuto(auto);
 			return Notificacion.COMPRASATISFECHA;
 		} else return Notificacion.DINERONODISPONIBLE;
-	}
+	}*/
 	
-	public Notificacion solicitarAuto(Carl carl, int asientos, String color, String marca) {
+	/*public Notificacion solicitarAuto(Carl carl, int asientos, String color, String marca) {
 		Auto auto = (Auto)carl.buscarAuto(asientos, color, marca);
-		Inmueble inmueble = this.existeEspacio();
-		if(inmueble == null) return Notificacion.NOHAYESPACIO;
+		//Inmueble inmueble = this.existeEspacio();
+		//if(inmueble == null) return Notificacion.NOHAYESPACIO;
 		if(auto == null) return Notificacion.NOEXISTEELAUTO;
 		if (auto.getPrecio() <= this.getEfectivo()+200) {
 			carl.cobrarDinero(this.pagar(auto.getPrecio()+200), auto);
 			inmueble.guardarAuto(auto);
 			return Notificacion.COMPRASATISFECHA;
 		} else return Notificacion.NOEXISTEELAUTO;
-	}
+	}*/
 	
 	
 	public Notificacion comprarInmueble(Propiedad inmueble) {
@@ -45,13 +48,13 @@ public class TommyVercetti extends Ciudadano {
 		} else return Notificacion.DINERONODISPONIBLE;
 	}
 	
-	private Inmueble existeEspacio() {
-		for(Propiedad inmueble : this.getPropiedades()) {
-			if(((Inmueble)inmueble).hayLugar()){
-				return (Inmueble) inmueble;
+	public boolean existeEspacio() {
+		for(Inmueble inmueble : this.getInmuebles()) {
+			if (inmueble.hayLugar()) {
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 	
 	@Override
